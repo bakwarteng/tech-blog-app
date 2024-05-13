@@ -1,0 +1,27 @@
+[
+  {
+    "username": "Sal",
+    "blog_title": "Sal's blog",
+    "blog_content": "I love CSS"
+  },
+  {
+    "username": "Lernantino",
+    "blog_title": "Lernantino's blog",
+    "blog_content": "I love SQL"
+  },
+  {
+    "username": "Amiko",
+    "blog_title": "Amiko's blog",
+    "blog_content": "I love JavaScript"
+  },
+  {
+    "username": "Jordan",
+    "blog_title": "Jordan's blog",
+    "blog_content": "I love HTML"
+  },
+  {
+    "username": "Blake",
+    "blog_title": "Blake's blog",
+    "blog_content": "I love bootcamp"
+  }
+]
