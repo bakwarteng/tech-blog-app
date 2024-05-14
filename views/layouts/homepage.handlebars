@@ -5,13 +5,13 @@
       <h2>
         <!-- Call helper function with triple brackets to render the emoji span as HTML -->
         {{{get_emoji}}}
-        <a href="/blog/{{blog.id}}">{{blog.name}}</a>
+        <a href="/blog/{{blog.id}}">{{blog.title}}</a>
       </h2>
       <p>
         <!-- Pass needed_funding value to the helper function -->
 
       </p>
-      <p>Created by {{blog.user.name}} on {{format_date blog.date_created}}</p>
+      <p>Created by {{blog.username}} on {{format_date blog.date_created}}</p>
     </div>
     <div class="col-md-7">
       <p>
