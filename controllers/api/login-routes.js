@@ -3,13 +3,13 @@ const router = require("express").Router();
 const { Blog, User } = require("../../models");
 
 // Login route
-// router.get("/", (req, res) => {
-//   if (req.session.loggedIn) {
-//     res.redirect("/");
-//     return;
-//   }
-//   res.render("login");
-// });
+router.get("/", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login");
+});
 router.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
     req.session.userId = user.id; // Store user ID in session for future use
 
     // Redirect to home page or any other page after successful login
-    res.redirect("/");
+    res.redirect("/blogs");
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).send("Internal server error");
