@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{username}}!</h2>
+    <h2>Welcome, {{username.users}}!</h2>
   </div>
 </div>
 
@@ -13,13 +13,17 @@
         <label for="blog-name">blog name:</label>
         <input class="form-input" type="text" id="blog-name" name="blog-name" />
       </div>
-      {{!-- <div class="form-group">
+      {{! <div class="form-group">
         <label for="project-funding">needed funding ($):</label>
         <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div> --}}
+      </div> }}
       <div class="form-group">
         <label for="blog-content">content:</label>
-        <textarea class="form-input" id="blog-content" name="blog-content"></textarea>
+        <textarea
+          class="form-input"
+          id="blog-content"
+          name="blog-content"
+        ></textarea>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Create</button>
@@ -28,20 +32,23 @@
   </div>
 
   {{#if blog.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Blogs:</h3>
+    <div class="col-md-6 project-list">
+      <h3>Current Blogs:</h3>
 
-    {{#each Blogs as |blog|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
-      </div>
+      {{#each Blogs as |blog|}}
+        <div class="row mb-2">
+          <div class="col-md-8">
+            <h4><a href="/blog/{{blog.id}}">{{blog.title}}</a></h4>
+          </div>
+          <div class="col-md-4">
+            <button
+              class="btn btn-sm btn-danger"
+              data-id="{{blog.id}}"
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
     </div>
-    {{/each}}
-  </div>
   {{/if}}
 </div>
 

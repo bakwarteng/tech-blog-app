@@ -1,15 +1,15 @@
-// const sequelize = require("../config/connection");
-// const seedBlog = require("./blogData");
-// const seedUser = require("./userData");
+const sequelize = require("../config/connection");
+const seedBlog = require("./blogData");
+const seedUser = require("./userData");
 
-// const seedAll =  function() async  seedBlog {
-//   await sequelize.sync({ force: true });
+const seedAll = async function () {
+  await sequelize.sync({ force: true });
 
-//   await seedBlog();
+  await seedBlog();
 
-//   await seeduser();
+  await seeduser();
 
-//   process.exit(0);
-// };
+  process.exit(0);
+};
 
-// seedAll();
+seedAll();
