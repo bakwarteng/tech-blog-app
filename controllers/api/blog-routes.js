@@ -2,7 +2,43 @@ const router = require("express").Router();
 const { Blog, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-router.post("/", withAuth, async (req, res) => {
+router.get("/blogs", withAuth, async (req, res) => {
+  try {
+    const blogs = await Blog.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ["username", " user_id"],
+        },
+      ],
+    });
+    const blogData = blogs.map((blogs) => blogs.get({ plain: true }));
+    res.status(200);
+    res.json(blogs);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+router.get("/blogs/:id", async (req, res) => {
+  try {
+    const blogs = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username", " user_id"],
+        },
+      ],
+    });
+
+    const blogData = Blog.get({ plain: true });
+    res.render("blogs", { blogs, loggedIn: req.session.loggedIn });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post("/blogs", async (req, res) => {
   try {
     const newBlog = await Blog.create({
       ...req.body,
@@ -14,10 +50,11 @@ router.post("/", withAuth, async (req, res) => {
     res.status(200).json(newBlog);
   } catch (err) {
     res.status(400).json(err);
+    console.error(err);
   }
 });
 
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete("/blog/:id", async (req, res) => {
   try {
     const blogData = await Blog.destroy({
       where: {

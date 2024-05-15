@@ -5,7 +5,7 @@
       <h2>
         <!-- Call helper function with triple brackets to render the emoji span as HTML -->
         {{{get_emoji}}}
-        <a href="/blog/{{blog.id}}">{{blog.title}}</a>
+        <a href="/blogs/{{blog.id}}">{{blog.blog_title}}</a>
       </h2>
       <p>
         <!-- Pass needed_funding value to the helper function -->
@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-7">
       <p>
-        {{blog.content}}
+        {{blog.blog_content}}
       </p>
     </div>
   </div>

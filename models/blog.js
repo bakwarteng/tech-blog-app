@@ -12,11 +12,6 @@ Blog.init(
       autoIncrement: true,
     },
 
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
     blog_title: {
       type: DataTypes.STRING,
     },

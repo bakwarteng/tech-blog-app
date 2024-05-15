@@ -30,9 +30,10 @@ router.post("/", async (req, res) => {
     // Set loggedIn session property
     req.session.loggedIn = true;
     req.session.userId = user.id; // Store user ID in session for future use
-
+    console.log(req.session.userId);
+    console.log(user.id);
     // Redirect to home page or any other page after successful login
-    res.redirect("/blogs");
+    res.redirect("/login");
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).send("Internal server error");
