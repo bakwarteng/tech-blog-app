@@ -1,21 +1,22 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
 
-  const blogTitle = document.querySelector("#blog-title").value.trim();
-  const blogContent = document.querySelector("#blog-content").value.trim();
+  const blog_title = document.querySelector("#blog-title").value.trim();
+  const blog_content = document.querySelector("#blog-content").value.trim();
   //   const description = document.querySelector("#project-desc").value.trim();
-
-  if (blogTitle && blogContent) {
-    const response = await fetch(`/blogs`, {
+  console.log(blog_title);
+  console.log(blog_content);
+  if (blog_title && blog_content) {
+    const response = await fetch(`/api/blogs`, {
       method: "POST",
-      body: JSON.stringify({ blogTitle, blogContent }),
+      body: JSON.stringify({ blog_title, blog_content }),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
     if (response.ok) {
-      document.location.replace("/blogs");
+      document.location.replace("/blogProfile");
     } else {
       alert("Failed to create blog post");
     }

@@ -38,13 +38,12 @@ router.get("/blogs/:id", async (req, res) => {
   }
 });
 
-router.post("/blogs", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newBlog = await Blog.create({
-      ...req.body,
       user_id: req.session.user_id,
-      blog_title: req.session,
-      blog_content: req.session,
+      blog_title: req.body.blog_title,
+      blog_content: req.body.blog_content,
     });
 
     res.status(200).json(newBlog);
