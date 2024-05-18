@@ -24,6 +24,8 @@ contribute with permission from the owner: bakwarteng,
 
 https://github.com/bakwarteng/tech-blog-app
 
+https://tech-blog-app-1.onrender.com
+
 # Screenshot
 
 ![alt text](<Screenshot 2024-05-18 165106.png>)
