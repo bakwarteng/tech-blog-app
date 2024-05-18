@@ -11,16 +11,16 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
+        <span role="img" aria-label="laptop"> 💻 </span>
         <a href="/">Write your Tech Blog!</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/blogProfile">blog</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/blogProfile">New Blog</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
