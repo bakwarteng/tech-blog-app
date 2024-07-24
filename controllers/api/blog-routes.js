@@ -8,30 +8,30 @@ router.get("/blogs", withAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["username", " user_id"],
+          attributes: ["username", "user_id"],
         },
       ],
     });
-    const blogData = blogs.map((blogs) => blogs.get({ plain: true }));
-    res.status(200);
-    res.json(blogs);
+    const blogData = blogs.map((blog) => blog.get({ plain: true }));
+    res.json({blogs: blogData});
   } catch (err) {
     res.status(400).json(err);
   }
 });
+
 router.get("/blogs/:id", async (req, res) => {
   try {
-    const blogs = await Blog.findByPk(req.params.id, {
+    const blog = await Blog.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ["username", " user_id"],
+          attributes: ["username", "user_id"],
         },
       ],
     });
 
-    const blogData = Blog.get({ plain: true });
-    res.render("blogs", { blogs, loggedIn: req.session.loggedIn });
+    const blogData = blog.get({ plain: true });
+    res.status(200).json(blogData);
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -40,21 +40,19 @@ router.get("/blogs/:id", async (req, res) => {
 
 router.post("/blogs", async (req, res) => {
   try {
+    const { blogTitle, blogContent } = req.body;
     const newBlog = await Blog.create({
-      ...req.body,
-      user_id: req.session.user_id,
-      blog_title: req.session,
-      blog_content: req.session,
+      title: blogTitle,
+      content: blogContent,
     });
-
-    res.status(200).json(newBlog);
+    res.redirect("/blogProfile")
+    res.status(201).json(newBlog);
   } catch (err) {
     res.status(400).json(err);
-    console.error(err);
   }
 });
 
-router.delete("/blog/:id", async (req, res) => {
+router.delete("/blogs/:id", async (req, res) => {
   try {
     const blogData = await Blog.destroy({
       where: {

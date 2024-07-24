@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const { User } = require("../../models");
 
+
+
 // CREATE new user
 router.post("/", async (req, res) => {
   try {
@@ -52,6 +54,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Logout user
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -61,5 +64,4 @@ router.post("/logout", (req, res) => {
     res.status(404).end();
   }
 });
-
-module.exports = router;
+ module.exports= router;

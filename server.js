@@ -4,6 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
+const blogRoutes= require('./controllers/api/blog-routes')
 const helpers = require("./utils/helpers");
 
 const sequelize = require("./config/connection");
@@ -41,6 +42,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(routes);
+app.use('/blogs', blogRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
